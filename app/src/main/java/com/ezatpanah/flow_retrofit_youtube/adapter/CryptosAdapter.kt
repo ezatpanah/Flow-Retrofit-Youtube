@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
+import com.ezatpanah.flow_retrofit_youtube.R
 import com.ezatpanah.flow_retrofit_youtube.databinding.ItemBinding
 import com.ezatpanah.flow_retrofit_youtube.response.ResponseCoinsMarkets
 import javax.inject.Inject
@@ -28,6 +30,7 @@ class CryptosAdapter @Inject() constructor() : RecyclerView.Adapter<CryptosAdapt
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(differ.currentList[position])
+        holder.setIsRecyclable(false)
     }
 
     inner class ViewHolder() : RecyclerView.ViewHolder(binding.root) {
@@ -35,10 +38,16 @@ class CryptosAdapter @Inject() constructor() : RecyclerView.Adapter<CryptosAdapt
         @SuppressLint("SetTextI18n")
         fun bind(item: ResponseCoinsMarkets.ResponseCoinsMarketsItem) {
             binding.apply {
-                tvId.text = item.id
-                tvSymbol.text = item.symbol
+                tvName.text = item.id
+                tvSymbol.text = "Symbol: ${item.symbol}"
+                tvPrice.text = "Last Price: €${item.currentPrice}"
+                imgCrypto.load(item.image) {
+                    crossfade(true)
+                    crossfade(500)
+                    placeholder(R.drawable.round_currency_bitcoin_24)
+                    error(R.drawable.round_currency_bitcoin_24)
+                }
             }
-
         }
     }
 
