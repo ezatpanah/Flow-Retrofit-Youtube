@@ -40,6 +40,18 @@ class ApiRepository @Inject constructor(private val apiServices: ApiServices) {
         }
         .flowOn(Dispatchers.IO)
 
-
+    suspend fun getDetailsCoin(id: String)= flow {
+        emit(DataStatus.loading())
+        val result = apiServices.getDetailsCoin(id)
+        when (result.code()) {
+            200 -> emit(DataStatus.success(result.body()))
+            400 -> emit(DataStatus.error(result.message()))
+            500 -> emit(DataStatus.error(result.message()))
+        }
+    }
+        .catch {
+            emit(DataStatus.error(it.message.toString()))
+        }
+        .flowOn(Dispatchers.IO)
 
 }

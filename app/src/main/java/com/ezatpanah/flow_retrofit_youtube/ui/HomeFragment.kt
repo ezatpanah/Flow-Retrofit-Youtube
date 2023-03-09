@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ezatpanah.flow_retrofit_youtube.R
 import com.ezatpanah.flow_retrofit_youtube.adapter.CryptosAdapter
@@ -16,7 +17,7 @@ import com.ezatpanah.flow_retrofit_youtube.utils.DataStatus
 import com.ezatpanah.flow_retrofit_youtube.utils.getCompatColor
 import com.ezatpanah.flow_retrofit_youtube.utils.initRecycler
 import com.ezatpanah.flow_retrofit_youtube.utils.isVisible
-import com.ezatpanah.flow_retrofit_youtube.viewmodel.HomeViewModel
+import com.ezatpanah.flow_retrofit_youtube.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -24,8 +25,10 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
 
-    private lateinit var binding: FragmentHomeBinding
-    private val viewModel: HomeViewModel by viewModels()
+    private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
+
+    private val viewModel: MainViewModel by viewModels()
 
     @Inject
     lateinit var cryptosAdapter: CryptosAdapter
@@ -34,7 +37,7 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        binding = FragmentHomeBinding.inflate(layoutInflater)
+        _binding = FragmentHomeBinding.inflate(layoutInflater)
         return binding.root
     }
 
@@ -71,6 +74,10 @@ class HomeFragment : Fragment() {
                         }
                         DataStatus.Status.SUCCESS -> {
                             cryptosAdapter.differ.submitList(it.data)
+                            cryptosAdapter.setOnItemClickListener { item ->
+                                val direction = HomeFragmentDirections.actionToDetailsFragment(item[0].id)
+                                findNavController().navigate(direction)
+                            }
                         }
                         DataStatus.Status.ERROR -> {
 
@@ -83,5 +90,10 @@ class HomeFragment : Fragment() {
 
     private fun setupRecyclerView() {
         binding.rvCrypto.initRecycler(LinearLayoutManager(requireContext()), cryptosAdapter)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }
