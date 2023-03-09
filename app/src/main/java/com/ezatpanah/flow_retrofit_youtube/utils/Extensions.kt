@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.View
 import androidx.annotation.ColorRes
 import androidx.core.content.res.ResourcesCompat
+import androidx.recyclerview.widget.RecyclerView
 
 fun View.isVisible(isShowLoading: Boolean, container: View) {
     if (isShowLoading) {
@@ -17,3 +18,8 @@ fun View.isVisible(isShowLoading: Boolean, container: View) {
 
 fun Context.getCompatColor(@ColorRes colorId: Int) =
     ResourcesCompat.getColor(resources, colorId, null)
+
+fun RecyclerView.initRecycler(layoutManager: RecyclerView.LayoutManager, adapter: RecyclerView.Adapter<*>) {
+    this.adapter=adapter
+    this.layoutManager=layoutManager
+}
