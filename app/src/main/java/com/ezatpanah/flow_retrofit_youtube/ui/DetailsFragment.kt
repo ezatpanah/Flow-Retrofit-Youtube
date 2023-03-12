@@ -1,9 +1,11 @@
 package com.ezatpanah.flow_retrofit_youtube.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -27,7 +29,7 @@ class DetailsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
+    ): View {
         _binding = FragmentDetailsBinding.inflate(layoutInflater)
         return binding.root
     }
@@ -36,12 +38,17 @@ class DetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         id = args.id
+        Log.d("DetailsFragment", id)
+
+
+
 
         lifecycleScope.launch {
             binding.apply {
                 viewModel.getDetailsCoin(id)
                 viewModel.detailsCoin.observe(viewLifecycleOwner) {
-                    tvData.text= it.data!!.description.en
+                    Toast.makeText(requireContext(), it.data!!.last_updated, Toast.LENGTH_SHORT).show()
+                    tvData.text= it.data.id
                 }
             }
         }

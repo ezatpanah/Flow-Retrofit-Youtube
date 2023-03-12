@@ -46,14 +46,19 @@ class CryptosAdapter @Inject() constructor() : RecyclerView.Adapter<CryptosAdapt
                     crossfade(500)
                     placeholder(R.drawable.round_currency_bitcoin_24)
                     error(R.drawable.round_currency_bitcoin_24)
+                    root.setOnClickListener {
+                        onItemClickListener?.let {
+                            it(item)
+                        }
+                    }
                 }
             }
         }
     }
 
-    private var onItemClickListener: ((ResponseCoinsMarkets) -> Unit)? = null
+    private var onItemClickListener: ((ResponseCoinsMarkets.ResponseCoinsMarketsItem) -> Unit)? = null
 
-    fun setOnItemClickListener(listener: (ResponseCoinsMarkets) -> Unit) {
+    fun setOnItemClickListener(listener: (ResponseCoinsMarkets.ResponseCoinsMarketsItem) -> Unit) {
         onItemClickListener = listener
     }
 

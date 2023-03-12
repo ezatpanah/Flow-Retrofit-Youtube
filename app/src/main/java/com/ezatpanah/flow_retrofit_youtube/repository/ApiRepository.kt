@@ -26,7 +26,7 @@ class ApiRepository @Inject constructor(private val apiServices: ApiServices) {
         }
         .flowOn(Dispatchers.IO)
 
-    suspend fun getCoinsList(vs_currency: String)= flow {
+    suspend fun getCoinsList(vs_currency: String) = flow {
         emit(DataStatus.loading())
         val result = apiServices.getCoinsMarket(vs_currency)
         when (result.code()) {
@@ -40,8 +40,7 @@ class ApiRepository @Inject constructor(private val apiServices: ApiServices) {
         }
         .flowOn(Dispatchers.IO)
 
-    suspend fun getDetailsCoin(id: String)= flow {
-        emit(DataStatus.loading())
+    suspend fun getDetailsCoin(id: String) = flow {
         val result = apiServices.getDetailsCoin(id)
         when (result.code()) {
             200 -> emit(DataStatus.success(result.body()))

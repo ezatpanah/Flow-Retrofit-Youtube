@@ -26,8 +26,8 @@ interface ApiServices {
 
     //Get details data (name, price, market, ... including exchange tickers) for a coin
     //https://api.coingecko.com/api/v3/coins/bitcoin
-    @GET("coins/{id}/")
-    suspend fun getDetailsCoin(@Path("id") id: String) : Response<ResponseDetailsCoin>
+    @GET("coins/{id}")
+    suspend fun getDetailsCoin(@Path("id") id: String) : Response<CoinDetails>
 
     //Get historical market data include price, market cap, and 24h volume (granularity auto)
     /**

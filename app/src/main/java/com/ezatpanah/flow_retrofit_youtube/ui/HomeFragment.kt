@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -75,7 +76,9 @@ class HomeFragment : Fragment() {
                         DataStatus.Status.SUCCESS -> {
                             cryptosAdapter.differ.submitList(it.data)
                             cryptosAdapter.setOnItemClickListener { item ->
-                                val direction = HomeFragmentDirections.actionToDetailsFragment(item[0].id)
+                                Log.d("HomeFragment", item.id)
+
+                                val direction = HomeFragmentDirections.actionHomeFragmentToDetailsFragment(item.id)
                                 findNavController().navigate(direction)
                             }
                         }
