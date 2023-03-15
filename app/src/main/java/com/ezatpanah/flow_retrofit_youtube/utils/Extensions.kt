@@ -23,3 +23,11 @@ fun RecyclerView.initRecycler(layoutManager: RecyclerView.LayoutManager, adapter
     this.adapter=adapter
     this.layoutManager=layoutManager
 }
+
+fun List<Double?>?.toDoubleFloatPairs(): List<Pair<String, Float>> {
+    return this!!.map { d ->
+        val f = d!!.toFloat()
+        val s = d.toString()
+        Pair(s, f)
+    }
+}

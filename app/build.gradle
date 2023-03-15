@@ -74,4 +74,7 @@ dependencies {
     //Coil
     implementation 'io.coil-kt:coil:2.2.2'
 
+    implementation 'com.diogobernardino:williamchart:3.10.1'
+
+
 }

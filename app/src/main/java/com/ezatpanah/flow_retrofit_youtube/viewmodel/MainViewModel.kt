@@ -5,8 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ezatpanah.flow_retrofit_youtube.repository.ApiRepository
-import com.ezatpanah.flow_retrofit_youtube.response.CoinDetails
 import com.ezatpanah.flow_retrofit_youtube.response.ResponseCoinsMarkets
+import com.ezatpanah.flow_retrofit_youtube.response.ResponseDetailsCoin
 import com.ezatpanah.flow_retrofit_youtube.response.ResponsePingServer
 import com.ezatpanah.flow_retrofit_youtube.utils.DataStatus
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -48,8 +48,8 @@ class MainViewModel @Inject constructor(private val repository: ApiRepository) :
     /**
      * Details Coin
      */
-    private val _detailsCoin = MutableLiveData<DataStatus<CoinDetails>>()
-    val detailsCoin: LiveData<DataStatus<CoinDetails>>
+    private val _detailsCoin = MutableLiveData<DataStatus<ResponseDetailsCoin>>()
+    val detailsCoin: LiveData<DataStatus<ResponseDetailsCoin>>
         get() = _detailsCoin
 
     fun getDetailsCoin(id: String) = viewModelScope.launch {

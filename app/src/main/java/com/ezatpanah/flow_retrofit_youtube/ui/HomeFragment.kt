@@ -1,5 +1,6 @@
 package com.ezatpanah.flow_retrofit_youtube.ui
 
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.ezatpanah.flow_retrofit_youtube.R
 import com.ezatpanah.flow_retrofit_youtube.adapter.CryptosAdapter
 import com.ezatpanah.flow_retrofit_youtube.databinding.FragmentHomeBinding
+import com.ezatpanah.flow_retrofit_youtube.utils.Constants.animationDuration
 import com.ezatpanah.flow_retrofit_youtube.utils.DataStatus
 import com.ezatpanah.flow_retrofit_youtube.utils.getCompatColor
 import com.ezatpanah.flow_retrofit_youtube.utils.initRecycler
@@ -75,9 +77,9 @@ class HomeFragment : Fragment() {
                         }
                         DataStatus.Status.SUCCESS -> {
                             cryptosAdapter.differ.submitList(it.data)
-                            cryptosAdapter.setOnItemClickListener { item ->
-                                Log.d("HomeFragment", item.id)
 
+                            cryptosAdapter.setOnItemClickListener { item ->
+                                Log.d("HomeFragment", item.id!!)
                                 val direction = HomeFragmentDirections.actionHomeFragmentToDetailsFragment(item.id)
                                 findNavController().navigate(direction)
                             }

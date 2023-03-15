@@ -16,13 +16,6 @@
     </fragment>
 
     <fragment
-        android:id="@+id/searchFragment"
-        android:name="com.ezatpanah.flow_retrofit_youtube.ui.SearchFragment"
-        android:label="fragment_search"
-        tools:layout="@layout/fragment_search" >
-    </fragment>
-
-    <fragment
         android:id="@+id/detailsFragment"
         android:name="com.ezatpanah.flow_retrofit_youtube.ui.DetailsFragment"
         android:label="fragment_details"
@@ -31,4 +24,5 @@
             android:name="id"
             app:argType="string" />
     </fragment>
+
 </navigation>

@@ -4,13 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#90CAF9"
     tools:context=".ui.DetailsFragment">
 
     <TextView
-        android:id="@+id/tvData"
+        android:id="@+id/tvCoinName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sample"
+        android:paddingBottom="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/lineChart" />
+
+    <com.db.williamchart.view.LineChartView
+        android:id="@+id/lineChart"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        app:chart_axis="none"
+        app:chart_gridEffect="dotted"
+        app:chart_labelsColor="#311B92"
+        app:chart_labelsSize="10sp"
+        app:chart_lineColor="#4A148C"
+        app:chart_lineThickness="3dp"
+        app:chart_smoothLine="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -2,6 +2,7 @@ package com.ezatpanah.flow_retrofit_youtube.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
@@ -11,6 +12,8 @@ import coil.load
 import com.ezatpanah.flow_retrofit_youtube.R
 import com.ezatpanah.flow_retrofit_youtube.databinding.ItemBinding
 import com.ezatpanah.flow_retrofit_youtube.response.ResponseCoinsMarkets
+import com.ezatpanah.flow_retrofit_youtube.utils.Constants
+import com.ezatpanah.flow_retrofit_youtube.utils.toDoubleFloatPairs
 import javax.inject.Inject
 
 class CryptosAdapter @Inject() constructor() : RecyclerView.Adapter<CryptosAdapter.ViewHolder>() {
@@ -46,10 +49,21 @@ class CryptosAdapter @Inject() constructor() : RecyclerView.Adapter<CryptosAdapt
                     crossfade(500)
                     placeholder(R.drawable.round_currency_bitcoin_24)
                     error(R.drawable.round_currency_bitcoin_24)
-                    root.setOnClickListener {
-                        onItemClickListener?.let {
-                            it(item)
-                        }
+                }
+
+                lineChart.gradientFillColors =
+                    intArrayOf(
+                        Color.parseColor("#4A148C"),
+                        Color.TRANSPARENT
+                    )
+
+                lineChart.animation.duration = Constants.animationDuration
+                val listData = item.sparklineIn7d?.price.toDoubleFloatPairs()
+                lineChart.animate(listData)
+
+                root.setOnClickListener {
+                    onItemClickListener?.let {
+                        it(item)
                     }
                 }
             }

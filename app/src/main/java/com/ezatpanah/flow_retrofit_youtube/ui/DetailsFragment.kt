@@ -1,19 +1,22 @@
 package com.ezatpanah.flow_retrofit_youtube.ui
 
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import com.ezatpanah.flow_retrofit_youtube.databinding.FragmentDetailsBinding
+import com.ezatpanah.flow_retrofit_youtube.utils.Constants.animationDuration
+import com.ezatpanah.flow_retrofit_youtube.utils.toDoubleFloatPairs
 import com.ezatpanah.flow_retrofit_youtube.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import java.util.stream.Collectors.toList
 
 @AndroidEntryPoint
 class DetailsFragment : Fragment() {
@@ -47,8 +50,15 @@ class DetailsFragment : Fragment() {
             binding.apply {
                 viewModel.getDetailsCoin(id)
                 viewModel.detailsCoin.observe(viewLifecycleOwner) {
-                    Toast.makeText(requireContext(), it.data!!.last_updated, Toast.LENGTH_SHORT).show()
-                    tvData.text= it.data.id
+                    tvCoinName.text=it.data?.name
+                    lineChart.gradientFillColors =
+                        intArrayOf(
+                            Color.parseColor("#81FFFFFF"),
+                            Color.TRANSPARENT
+                        )
+                    lineChart.animation.duration = animationDuration
+                    val listData = it.data?.marketData?.sparkline7d?.price?.toDoubleFloatPairs()
+                    lineChart.animate(listData!!)
                 }
             }
         }
