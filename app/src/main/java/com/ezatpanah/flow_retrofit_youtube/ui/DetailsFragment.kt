@@ -20,6 +20,7 @@ import com.ezatpanah.flow_retrofit_youtube.utils.toDoubleFloatPairs
 import com.ezatpanah.flow_retrofit_youtube.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import org.jsoup.Jsoup
 
 @AndroidEntryPoint
 class DetailsFragment : Fragment() {
@@ -53,7 +54,7 @@ class DetailsFragment : Fragment() {
 
                         }
                         DataStatus.Status.SUCCESS -> {
-                            tvCoinNameSymbol.text = "${it.data?.name} [${it.data?.symbol}]"
+                            tvCoinNameSymbol.text = "${it.data?.name} [${it.data?.symbol?.uppercase()}]"
                             tvCurrentPrice.text = it.data?.marketData?.currentPrice?.eur.toString()
                             tvChangePercentage.text = "${it.data?.marketData?.priceChangePercentage24h?.roundToTwoDecimals()} %"
                             imgCoinLogo.load(it.data?.image?.large) {
@@ -70,6 +71,8 @@ class DetailsFragment : Fragment() {
                             lineChart.animation.duration = animationDuration
                             val listData = it.data?.marketData?.sparkline7d?.price?.toDoubleFloatPairs()
                             lineChart.animate(listData!!)
+
+                            tvDescription.text=Jsoup.parse(it.data.description?.en!!).text()
                         }
                         DataStatus.Status.ERROR -> {
 

@@ -43,7 +43,7 @@ class CryptosAdapter @Inject() constructor() : RecyclerView.Adapter<CryptosAdapt
         fun bind(item: ResponseCoinsMarkets.ResponseCoinsMarketsItem) {
             binding.apply {
                 tvName.text = item.id
-                tvSymbol.text = "Symbol: ${item.symbol}"
+                tvSymbol.text = item.symbol?.uppercase()
                 tvPrice.text = "€${item.currentPrice?.roundToThreeDecimals()}"
                 imgCrypto.load(item.image) {
                     crossfade(true)
