@@ -54,7 +54,7 @@ class CryptosAdapter @Inject() constructor() : RecyclerView.Adapter<CryptosAdapt
 
                 lineChart.gradientFillColors =
                     intArrayOf(
-                        Color.parseColor("#4A148C"),
+                        Color.parseColor("#2a9085"),
                         Color.TRANSPARENT
                     )
 

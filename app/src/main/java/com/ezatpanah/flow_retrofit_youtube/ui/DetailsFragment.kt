@@ -65,7 +65,7 @@ class DetailsFragment : Fragment() {
                             }
                             lineChart.gradientFillColors =
                                 intArrayOf(
-                                    Color.parseColor("#4A148C"),
+                                    Color.parseColor("#2a9085"),
                                     Color.TRANSPARENT
                                 )
                             lineChart.animation.duration = animationDuration
@@ -83,8 +83,8 @@ class DetailsFragment : Fragment() {
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         _binding = null
     }
 

@@ -79,8 +79,8 @@ class HomeFragment : Fragment() {
         binding.rvCrypto.initRecycler(LinearLayoutManager(requireContext()), cryptosAdapter)
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         _binding = null
     }
 }
