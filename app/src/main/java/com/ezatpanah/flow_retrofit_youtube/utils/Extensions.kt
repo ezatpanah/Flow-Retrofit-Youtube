@@ -5,6 +5,7 @@ import android.view.View
 import androidx.annotation.ColorRes
 import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
+import java.text.DecimalFormat
 
 fun View.isVisible(isShowLoading: Boolean, container: View) {
     if (isShowLoading) {
@@ -31,3 +32,9 @@ fun List<Double?>?.toDoubleFloatPairs(): List<Pair<String, Float>> {
         Pair(s, f)
     }
 }
+
+private val formatter2= DecimalFormat("##.##")
+private val formatter3= DecimalFormat("##.###")
+
+fun Double.roundToTwoDecimals() = formatter2.format(this).toString()
+fun Double.roundToThreeDecimals() = formatter3.format(this).toString()

@@ -7,7 +7,6 @@ import androidx.lifecycle.viewModelScope
 import com.ezatpanah.flow_retrofit_youtube.repository.ApiRepository
 import com.ezatpanah.flow_retrofit_youtube.response.ResponseCoinsMarkets
 import com.ezatpanah.flow_retrofit_youtube.response.ResponseDetailsCoin
-import com.ezatpanah.flow_retrofit_youtube.response.ResponsePingServer
 import com.ezatpanah.flow_retrofit_youtube.utils.DataStatus
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -15,19 +14,6 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(private val repository: ApiRepository) : ViewModel() {
-
-    /**
-     * Server Status
-     */
-    private val _serverStatus = MutableLiveData<DataStatus<ResponsePingServer>>()
-    val serverStatus: LiveData<DataStatus<ResponsePingServer>>
-        get() = _serverStatus
-
-    fun getServerStatus() = viewModelScope.launch {
-        repository.getServerStatus().collect{
-            _serverStatus.value=it
-        }
-    }
 
     /**
      * List of Coins

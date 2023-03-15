@@ -13,6 +13,7 @@ import com.ezatpanah.flow_retrofit_youtube.R
 import com.ezatpanah.flow_retrofit_youtube.databinding.ItemBinding
 import com.ezatpanah.flow_retrofit_youtube.response.ResponseCoinsMarkets
 import com.ezatpanah.flow_retrofit_youtube.utils.Constants
+import com.ezatpanah.flow_retrofit_youtube.utils.roundToThreeDecimals
 import com.ezatpanah.flow_retrofit_youtube.utils.toDoubleFloatPairs
 import javax.inject.Inject
 
@@ -43,7 +44,7 @@ class CryptosAdapter @Inject() constructor() : RecyclerView.Adapter<CryptosAdapt
             binding.apply {
                 tvName.text = item.id
                 tvSymbol.text = "Symbol: ${item.symbol}"
-                tvPrice.text = "Last Price: €${item.currentPrice}"
+                tvPrice.text = "€${item.currentPrice?.roundToThreeDecimals()}"
                 imgCrypto.load(item.image) {
                     crossfade(true)
                     crossfade(500)

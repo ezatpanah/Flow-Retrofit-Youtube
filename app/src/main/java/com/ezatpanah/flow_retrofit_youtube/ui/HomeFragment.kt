@@ -52,24 +52,6 @@ class HomeFragment : Fragment() {
         lifecycleScope.launch {
 
             binding.apply {
-                viewModel.getServerStatus()
-                viewModel.serverStatus.observe(viewLifecycleOwner) {
-                    when (it.status) {
-                        DataStatus.Status.LOADING -> {
-                            pBarStatus.isVisible(true, imgStatus)
-                        }
-                        DataStatus.Status.SUCCESS -> {
-                            Log.d("MainActivity", "onCreate: ${it.data!!.geckoSays}")
-                            pBarStatus.isVisible(false, imgStatus)
-                            imgStatus.setColorFilter(requireContext().getCompatColor(R.color.status_green))
-                        }
-                        DataStatus.Status.ERROR -> {
-                            pBarStatus.isVisible(true, imgStatus)
-                            imgStatus.setColorFilter(requireContext().getCompatColor(R.color.status_red))
-                        }
-                    }
-                }
-
                 viewModel.getCoinsList("eur")
                 viewModel.coinsList.observe(viewLifecycleOwner) {
                     when (it.status) {
