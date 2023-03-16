@@ -56,10 +56,11 @@ class HomeFragment : Fragment() {
                 viewModel.coinsList.observe(viewLifecycleOwner) {
                     when (it.status) {
                         DataStatus.Status.LOADING -> {
+                            pBarLoading.isVisible(true,rvCrypto)
                         }
                         DataStatus.Status.SUCCESS -> {
+                            pBarLoading.isVisible(false,rvCrypto)
                             cryptosAdapter.differ.submitList(it.data)
-
                             cryptosAdapter.setOnItemClickListener { item ->
                                 Log.d("HomeFragment", item.id!!)
                                 val direction = HomeFragmentDirections.actionHomeFragmentToDetailsFragment(item.id)
@@ -67,7 +68,8 @@ class HomeFragment : Fragment() {
                             }
                         }
                         DataStatus.Status.ERROR -> {
-
+                            pBarLoading.isVisible(true,rvCrypto)
+                            Toast.makeText(requireContext(), "There is something wrong!", Toast.LENGTH_SHORT).show()
                         }
                     }
                 }
