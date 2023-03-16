@@ -7,8 +7,11 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-
-    <color name="status_red">#F44336</color>
-    <color name="status_green">#4CAF50</color>
+    
+    <color name="red">#F44336</color>
+    <color name="green">#4CAF50</color>
+    <color name="bgColor">#424242</color>
+    <color name="chartLineColor">#FFF176</color>
+    <color name="chartBG">#2a9085</color>
 
 </resources>
