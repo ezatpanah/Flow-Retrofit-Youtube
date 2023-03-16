@@ -19,6 +19,9 @@ fun View.isVisible(isShowLoading: Boolean, container: View) {
 
 fun Context.getCompatColor(@ColorRes colorId: Int) =
     ResourcesCompat.getColor(resources, colorId, null)
+    
+fun Context.getCompatDrawable(@DrawableRes drawableId: Int) = 
+    AppCompatResources.getDrawable(this, drawableId)!!
 
 fun RecyclerView.initRecycler(layoutManager: RecyclerView.LayoutManager, adapter: RecyclerView.Adapter<*>) {
     this.adapter=adapter
