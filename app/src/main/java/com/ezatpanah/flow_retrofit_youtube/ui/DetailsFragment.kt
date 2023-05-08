@@ -110,7 +110,7 @@ class DetailsFragment : Fragment() {
                                 }
 
                                 //Description
-                                tvDescription.text = if (data.genesisDate != null && data.genesisDate.isNotEmpty()) Jsoup.parse(data.description?.en!!).text() else "-"
+                                tvDescription.text = if (data.description?.en != null && data.description.en.isNotEmpty()) Jsoup.parse(data.description.en).text() else "-"
                                 tvDescription.movementMethod = ScrollingMovementMethod()
 
                             }
