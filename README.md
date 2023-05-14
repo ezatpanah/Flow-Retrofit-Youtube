@@ -13,7 +13,7 @@ Screen-Shot :
 <br>
 <img alt="Ezatpanah Flow-Retrofit-Youtube" src="screenshots/Screenshot_1683364465.png" width="20%">
 <br>
-<img alt="Ezatpanah Flow-Retrofit-Youtube" src="screenshots/Screenshot_1683364468.png" width="50%">
+<img alt="Ezatpanah Flow-Retrofit-Youtube" src="screenshots/Screenshot_1683364468.png" width="20%">
 
 Article on Medium:
 <br>
