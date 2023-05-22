@@ -32,7 +32,8 @@ Screen-Shot :
 
 Article on Medium:
 <br>
-https://medium.com/@ezatpanah/how-to-use-flow-with-retrofit-complete-guide-part-1-34373ee53d73
+Part 1 : https://medium.com/@ezatpanah/how-to-use-flow-with-retrofit-complete-guide-part-1-34373ee53d73\
+Part 2 : Coming soon
 <br>
 
 ✨ Join Medium to read thousands of valuable stories ✨
