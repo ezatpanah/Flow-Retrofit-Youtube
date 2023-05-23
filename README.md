@@ -12,7 +12,7 @@ Part 1:
 <br> 
 Part 2 :
 <br> 
-<a href="" target="_blank"><img alt="Ezatpanah Flow-Retrofit-Youtube" src="Flow-Retrofit-Part2.jpg" width="60%"></a>
+<a href="https://youtu.be/WpuIo4vjDpE" target="_blank"><img alt="Ezatpanah Flow-Retrofit-Youtube" src="Flow-Retrofit-Part2.jpg" width="60%"></a>
 <br> 
 
 <br> 
@@ -36,7 +36,11 @@ Part 1 : https://medium.com/@ezatpanah/how-to-use-flow-with-retrofit-complete-gu
 <br> 
 Part 2 : Coming soon
 <br>
+https://medium.com/@ezatpanah/how-to-use-flow-with-retrofit-complete-guide-part-2-356a4932ae44
 
+<br>
+<br>
+<br>
 ✨ Join Medium to read thousands of valuable stories ✨
 <br>
 https://medium.com/@ezatpanah/membership
