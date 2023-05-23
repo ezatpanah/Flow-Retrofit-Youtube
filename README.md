@@ -34,9 +34,7 @@ Article on Medium:
 <br>
 Part 1 : https://medium.com/@ezatpanah/how-to-use-flow-with-retrofit-complete-guide-part-1-34373ee53d73
 <br> 
-Part 2 : Coming soon
-<br>
-https://medium.com/@ezatpanah/how-to-use-flow-with-retrofit-complete-guide-part-2-356a4932ae44
+Part 2 : https://medium.com/@ezatpanah/how-to-use-flow-with-retrofit-complete-guide-part-2-356a4932ae44
 
 <br>
 <br>
